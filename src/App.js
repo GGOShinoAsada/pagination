@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import React,  { useState , useEffect}  from 'react';
+import axios from 'axios';
 
 function App() {
+  const [countries, setCountries] = useState([]);
+  const [loading, setloading] = useState(false);
+  const [currentpage, setCurrentPage] = useState(1); 
+  const [contriesPage] = useState(10);
+  useEffect(()=>{
+    const getContries = async () =>{
+      setloading(true)
+      const res = await axios.get('https://restcountries.eu/rest/v2/all');
+      console.log(res);
+    }
+    getContries();
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="App"></div>
   );
 }
 
